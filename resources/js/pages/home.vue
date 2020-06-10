@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Home</h1>
+                <h1>Plataforma Alumni</h1>
             </div>
         </div>
     </div>

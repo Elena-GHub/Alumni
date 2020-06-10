@@ -1,6 +1,7 @@
 <template>
     <div>
         <navbar :app="this"></navbar>
+        <navbarforum :app="this"></navbarforum>
 
         <spinner v-if="loading"></spinner>
         <div v-else-if="initiated">
@@ -11,10 +12,12 @@
 
 <script>
     import Navbar from "./components/navbar";
+    import Navbarforum from "./components/navbarforum";
     import Helper from './utils/helper'
     export default {
         name: "App",
         components: {Navbar},
+        components: {Navbarforum},
         data()
         {
             return {
@@ -35,7 +38,7 @@
             {
                 this.loading = true;
 
-                this.req.get('init').then((response) => {
+                this.req.get('auth/init').then((response) => {
                     this.loading = false;
                     this.initiated = true;
 

@@ -1,6 +1,7 @@
 import Login from './pages/login';
 import Register from './pages/register';
 import Home from './pages/home';
+import Foro from './pages/foro';
 
 const routes = [
     {
@@ -19,6 +20,12 @@ const routes = [
         path: '/',
         component: Home,
         name: 'home'
+    },
+
+    {
+        path: '/foro',
+        component: Foro,
+        name: 'foro'
     }
 ];
 
