@@ -2,6 +2,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import Home from './pages/home';
 import Foro from './pages/foro';
+import Categories from './pages/categories';
 
 const routes = [
     {
@@ -26,6 +27,12 @@ const routes = [
         path: '/foro',
         component: Foro,
         name: 'foro'
+    },
+
+    {
+        path: '/categories',
+        component: Categories,
+        name: 'categories'
     }
 ];
 

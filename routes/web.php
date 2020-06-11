@@ -22,7 +22,7 @@ Route::prefix('auth')->group(function(){
     Route::get('init', 'UserController@init');
 });
 
-Route::get('categories', 'CateroryController@getCategories');
+Route::get('categories', 'CategoryController@getCategories');
 Route::get('forum/{id}', 'ForumController@getForumById');
 Route::post('post/create', 'PostController@create');
 
