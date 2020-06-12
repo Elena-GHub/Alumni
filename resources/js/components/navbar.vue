@@ -27,7 +27,7 @@
             <router-link to="/" class="nav-link">Inicio</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/" class="nav-link">FAQ</router-link>
+            <router-link to="/Faq" class="nav-link">FAQ</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/Categories" class="nav-link">Foro</router-link>
@@ -84,7 +84,8 @@ export default {
       this.app.req.post('auth/logout').then(() => {
         this.app.user = null;
         this.$router.push({
-          name: 'categories'
+          name: 'categories',
+          name: 'faq'
         });
       })
     }

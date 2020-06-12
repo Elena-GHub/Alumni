@@ -3,6 +3,7 @@ import Register from './pages/register';
 import Home from './pages/home';
 import Foro from './pages/foro';
 import Categories from './pages/categories';
+import Faq from './pages/faq';
 
 const routes = [
     {
@@ -33,6 +34,12 @@ const routes = [
         path: '/categories',
         component: Categories,
         name: 'categories'
+    },
+
+    {
+        path: '/faq',
+        component: Faq,
+        name: 'faq'
     }
 ];
 
