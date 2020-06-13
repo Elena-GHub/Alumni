@@ -7,11 +7,12 @@
             <router-view :app="this" />
         </div>
     </div>
-</template>
+</template> 
 
 <script>
     import Navbar from "./components/navbar";
-    import Helper from './utils/helper'
+    import Helper from './utils/helper';
+
     export default {
         name: "App",
         components: {Navbar},
@@ -25,6 +26,9 @@
                     baseURL: BASE_URL
                 }),
                 user: null,
+                currentForum: null,
+                activeThreads : [],
+                threadCount: 0
             }
         },
         mounted(){

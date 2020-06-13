@@ -28,7 +28,10 @@ class CategoryController extends Controller
                 ->select('posts.*', 'threads.title as thread_title', 'threads.id as thread.id')
                 ->first();
                 
-                $currentForum['latest']['user'] = User::find($currentForum['latest']->user_id);
+                if(isset($currentForum['latest']->id)) 
+                {
+                    $currentForum['latest']['user'] = User::find($currentForum['latest']->user_id);
+                }
                
                 $currentForum['replies'] = Post::leftJoin('threads', 'posts.thread_id', '=', 'threads.id')
                 ->where('threads.forum_id', '=', $currentForum->id)
