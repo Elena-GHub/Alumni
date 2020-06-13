@@ -16,10 +16,8 @@
                             </li>
                         </ol>
                     </nav>
-
                     <h1 class="display-4"> {{ forum.title }} </h1>
-                </div>
-                
+                </div> 
             </div>
         </div>
 
