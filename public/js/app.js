@@ -1739,7 +1739,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.req.get('init').then(function (response) {
+      this.req.get('auth/init').then(function (response) {
         _this.loading = false;
         _this.initiated = true;
 
@@ -1762,6 +1762,41 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1812,10 +1847,12 @@ __webpack_require__.r(__webpack_exports__);
     logout: function logout() {
       var _this = this;
 
-      this.app.req.post('logout').then(function () {
+      this.app.req.post('auth/logout').then(function () {
         _this.app.user = null;
 
-        _this.$router.push('/login');
+        _this.$router.push(_defineProperty({
+          name: 'forumhome'
+        }, "name", 'faq'));
       });
     }
   }
@@ -1823,20 +1860,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/categories.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/categories.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/faq.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/faq.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -1881,34 +1913,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'categories',
-  components: {},
-  props: ['app'],
-  data: function data() {
-    return {
-      categories: null,
-      loading: false
-    };
-  },
-  filters: {
-    friendlyDate: function friendlyDate(value) {
-      return moment(value).fromNow();
-    }
-  },
-  mounted: function mounted() {
-    this.getCategories();
-  },
-  methods: {
-    getCategories: function getCategories() {
-      var _this = this;
-
-      this.loading = true;
-      this.app.req.get("categories").then(function (response) {
-        _this.loading = false;
-        _this.categories = response.data;
-      });
-    }
-  }
+  name: "faq",
+  props: ["app"]
 });
 
 /***/ }),
@@ -1922,8 +1928,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -2058,6 +2062,122 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/forumhome.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/forumhome.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'categories',
+  components: {},
+  props: ['app'],
+  data: function data() {
+    return {
+      categories: null,
+      loading: false
+    };
+  },
+  filters: {
+    friendlyDate: function friendlyDate(value) {
+      return moment(value).fromNow();
+    }
+  },
+  mounted: function mounted() {
+    this.getCategories();
+  },
+  methods: {
+    getCategories: function getCategories() {
+      var _this = this;
+
+      this.loading = true;
+      this.app.req.get("categories").then(function (response) {
+        _this.loading = false;
+        _this.categories = response.data;
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/home.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/home.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "home",
+  props: ['app']
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/login.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/login.vue?vue&type=script&lang=js& ***!
@@ -2159,7 +2279,7 @@ __webpack_require__.r(__webpack_exports__);
           email: this.email,
           password: this.password
         };
-        this.app.req.post('login', data).then(function (response) {
+        this.app.req.post('auth/login', data).then(function (response) {
           _this.loading = false;
 
           if (response.data.id) {
@@ -2325,7 +2445,7 @@ __webpack_require__.r(__webpack_exports__);
           email: this.email,
           password: this.password
         };
-        this.app.req.post('register', data).then(function (response) {
+        this.app.req.post('auth/register', data).then(function (response) {
           _this.loading = false;
 
           if (response.data.id) {
@@ -73538,7 +73658,12 @@ var render = function() {
       _vm.loading
         ? _c("spinner")
         : _vm.initiated
-        ? _c("div", [_c("router-view", { attrs: { app: this } })], 1)
+        ? _c(
+            "div",
+            { staticStyle: { "margin-top": "15px" } },
+            [_c("router-view", { attrs: { app: this } })],
+            1
+          )
         : _vm._e()
     ],
     1
@@ -73567,106 +73692,181 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-lg navbar-dark bg-success" },
-      [
-        _c("router-link", { staticClass: "navbar-brand", attrs: { to: "/" } }, [
-          _vm._v("Skeleton")
-        ]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "collapse navbar-collapse",
-            attrs: { id: "navbarSupportedContent" }
-          },
-          [
-            _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+    _c("nav", { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "collapse navbar-collapse",
+          attrs: { id: "navbarSupportedContent" }
+        },
+        [
+          _c("ul", { staticClass: "navbar-nav ml-auto" }, [
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/" } },
+                  [_vm._v("Inicio")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/Faq" } },
+                  [_vm._v("FAQ")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/Forumhome" } },
+                  [_vm._v("Foro")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/" } },
+                  [_vm._v("Ofertas de trabajo")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/" } },
+                  [_vm._v("Perfiles")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/" } },
+                  [_vm._v("Empresas")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item dropdown" }, [
               _c(
-                "li",
-                { staticClass: "nav-item" },
+                "a",
+                {
+                  staticClass: "nav-link dropdown-toggle",
+                  attrs: {
+                    href: "#",
+                    id: "navbarDropdown",
+                    role: "button",
+                    "data-toggle": "dropdown",
+                    "aria-haspopup": "true",
+                    "aria-expanded": "false"
+                  }
+                },
                 [
-                  _c(
-                    "router-link",
-                    { staticClass: "nav-link", attrs: { to: "/" } },
-                    [_vm._v("Home")]
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.app.user ? _vm.app.user.name : "Cuenta") +
+                      "\n          "
                   )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "dropdown-menu",
+                  attrs: { "aria-labelledby": "navbarDropdown" }
+                },
+                [
+                  !_vm.app.user
+                    ? _c(
+                        "router-link",
+                        {
+                          staticClass: "dropdown-item",
+                          attrs: { to: { name: "login" } }
+                        },
+                        [_vm._v("Iniciar sesión")]
+                      )
+                    : _c(
+                        "a",
+                        {
+                          staticClass: "dropdown-item",
+                          attrs: { href: "javascript:;" },
+                          on: { click: _vm.logout }
+                        },
+                        [_vm._v("Cerrar sesión")]
+                      )
                 ],
                 1
               )
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "navbar-nav ml-auto" }, [
-              _c("li", { staticClass: "nav-item dropdown" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "nav-link dropdown-toggle",
-                    attrs: {
-                      href: "#",
-                      id: "navbarDropdown",
-                      role: "button",
-                      "data-toggle": "dropdown"
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.app.user ? _vm.app.user.name : "Account"))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "dropdown-menu",
-                    attrs: { "aria-labelledby": "navbarDropdown" }
-                  },
-                  [
-                    !_vm.app.user
-                      ? _c(
-                          "div",
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "dropdown-item",
-                                attrs: { to: "/login" }
-                              },
-                              [_vm._v("Login")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "dropdown-item",
-                                attrs: { to: "/register" }
-                              },
-                              [_vm._v("Register")]
-                            )
-                          ],
-                          1
-                        )
-                      : _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "javascript:;" },
-                            on: { click: _vm.logout }
-                          },
-                          [_vm._v("Logout")]
-                        )
-                  ]
-                )
-              ])
             ])
-          ]
-        )
-      ],
-      1
-    )
+          ])
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "navbar-brand",
+        attrs: {
+          target: "_blank",
+          rel: "noopener noreferrer",
+          href: "http://www.factoriaf5.org/"
+        }
+      },
+      [
+        _c("img", {
+          staticStyle: { "max-height": "30px" },
+          attrs: {
+            src: __webpack_require__(/*! ../img/logo-ff5simplon-negativo-02-e1544704915542.png */ "./resources/js/img/logo-ff5simplon-negativo-02-e1544704915542.png"),
+            alt: "Factoría F5"
+          }
+        })
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -73678,7 +73878,10 @@ var staticRenderFns = [
         attrs: {
           type: "button",
           "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent"
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
         }
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
@@ -73691,10 +73894,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/categories.vue?vue&type=template&id=dc844376&":
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/categories.vue?vue&type=template&id=dc844376& ***!
-  \********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/faq.vue?vue&type=template&id=6ae5e03d&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/faq.vue?vue&type=template&id=6ae5e03d&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -73706,191 +73909,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm.loading
-        ? _c("spinner")
-        : _c(
-            "div",
-            _vm._l(_vm.categories, function(category, index) {
-              return _c(
-                "div",
-                {
-                  key: index,
-                  staticClass: "container",
-                  staticStyle: { "margin-bottom": "13px" }
-                },
-                [
-                  _c("div", { staticClass: "row justify-content-center" }, [
-                    _c("div", { staticClass: "col-md-12" }, [
-                      _c("div", { staticClass: "card" }, [
-                        _c("div", { staticClass: "card-header" }, [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(category.title) +
-                              "\n                        "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "card-body" }, [
-                          _c(
-                            "ul",
-                            { staticClass: "list-group list-group-flush" },
-                            _vm._l(category.fora, function(forum, forumIndex) {
-                              return _c(
-                                "li",
-                                {
-                                  key: forumIndex,
-                                  staticClass:
-                                    "list-group-item d-flex justify-content-center align-content-center",
-                                  staticStyle: { height: "100px" }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        width: "40%",
-                                        display: "inline-block"
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "h5",
-                                        {
-                                          staticStyle: { "line-height": "75px" }
-                                        },
-                                        [
-                                          _c(
-                                            "router-link",
-                                            {
-                                              attrs: {
-                                                to: {
-                                                  name: "forum",
-                                                  params: { id: forum.id }
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                                " +
-                                                  _vm._s(forum.title) +
-                                                  " \n                                            "
-                                              )
-                                            ]
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        width: "20%",
-                                        display: "inline-block",
-                                        "text-align": "center"
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticStyle: { "line-height": "75px" }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                            " +
-                                              _vm._s(forum.views) +
-                                              " / "
-                                          ),
-                                          _c("strong", [
-                                            _vm._v(
-                                              " " +
-                                                _vm._s(forum.replies - 1) +
-                                                " "
-                                            )
-                                          ])
-                                        ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  forum.latest
-                                    ? _c(
-                                        "div",
-                                        {
-                                          staticStyle: {
-                                            width: "40%",
-                                            display: "inline-block",
-                                            "padding-top": "15px"
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "router-link",
-                                            {
-                                              attrs: {
-                                                to: {
-                                                  name: "thread",
-                                                  params: {
-                                                    id: forum.latest.thread_id
-                                                  }
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                            " +
-                                                  _vm._s(
-                                                    forum.latest.thread_title
-                                                  ) +
-                                                  "\n                                        "
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("br"),
-                                          _vm._v(" "),
-                                          _c("span", [
-                                            _vm._v(
-                                              " by " +
-                                                _vm._s(forum.latest.user.name) +
-                                                " ·\n                                            " +
-                                                _vm._s(
-                                                  _vm._f("friendlyDate")(
-                                                    forum.latest.created_at
-                                                  )
-                                                ) +
-                                                " \n                                        "
-                                            )
-                                          ])
-                                        ],
-                                        1
-                                      )
-                                    : _vm._e()
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        ])
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            }),
-            0
-          )
-    ],
-    1
-  )
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("h1", [_vm._v("FAQ - Preguntas frecuentes")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("h3", [
+                _vm._v("Bienvenid@ al foro de coders de Factoría F5!")
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n                  Por favor lee estas preguntas frecuentes para sacarle el máximo partido a esta plataforma.\n                  Esperemos que la disfrutes y te resulte de provecho.\n                  Let's Go! (o let's PHP! o let's Java!... humor malo de coders, sorry ;-)\n              "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-header" }, [
+              _c("h4", [_vm._v("¿Hay normas de etiqueta?")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "\n              Pues sí, las habituales cuando se pretende mantener la concordia y el buen ambiente en cualquier comunidad.\n              La mayoría las conocerás si ya te mueves por otros foros.\n              Por favor, no abuses de mayúsculas, se entiende que equivale a gritar.\n              Evita expresiones malsonantes o alusiones que puedan ser susceptibles de ofensivas.\n              "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-header" }, [
+              _c("h4", [
+                _vm._v("¿Hay censura en las valoraciones a empresas?")
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  '\n                  No. Deseamos que las valoraciones sean lo más sinceras posibles, pero también justificadas.\n                  Ya sea positiva, neutral o negativa, por favor añade un mínimo comentario sobre qué criterios\n                  te han llevado a esa conclusión. Así, será más útil para otr@s coders.\n                  Algo que a algun@s les parece algo positivo, a otr@s les puede parecer positivo o irrelevante.\n                  Por ejemplo, si valoras una pizzería como "mala" porque solo sirve pizza con masa\n                  tipo Chicago (deep pan) es algo subjetivo. A lo mejor resulta que para otra persona es justo al revés\n                  o le da igual y le gustan todas.\n              '
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -74110,6 +74182,249 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/forumhome.vue?vue&type=template&id=0ea17267&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/forumhome.vue?vue&type=template&id=0ea17267& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm.loading
+        ? _c("spinner")
+        : _c(
+            "div",
+            _vm._l(_vm.categories, function(category, index) {
+              return _c(
+                "div",
+                {
+                  key: index,
+                  staticClass: "container",
+                  staticStyle: { "margin-bottom": "13px" }
+                },
+                [
+                  _c("div", { staticClass: "row justify-content-center" }, [
+                    _c("div", { staticClass: "col-md-12" }, [
+                      _c("div", { staticClass: "card" }, [
+                        _c("div", { staticClass: "card-header" }, [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(category.title) +
+                              "\n                        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
+                          _c(
+                            "ul",
+                            { staticClass: "list-group list-group-flush" },
+                            _vm._l(category.fora, function(forum, forumIndex) {
+                              return _c(
+                                "li",
+                                {
+                                  key: forumIndex,
+                                  staticClass:
+                                    "list-group-item d-flex justify-content-center align-content-center",
+                                  staticStyle: { height: "100px" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticStyle: {
+                                        width: "40%",
+                                        display: "inline-block"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "h5",
+                                        {
+                                          staticStyle: { "line-height": "75px" }
+                                        },
+                                        [
+                                          _c(
+                                            "router-link",
+                                            {
+                                              attrs: {
+                                                to: {
+                                                  name: "forum",
+                                                  params: { id: forum.id }
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                " +
+                                                  _vm._s(forum.title) +
+                                                  " \n                                            "
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticStyle: {
+                                        width: "20%",
+                                        display: "inline-block",
+                                        "text-align": "center"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticStyle: { "line-height": "75px" }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                            " +
+                                              _vm._s(forum.views) +
+                                              " / "
+                                          ),
+                                          _c("strong", [
+                                            _vm._v(
+                                              " " +
+                                                _vm._s(forum.replies - 1) +
+                                                " "
+                                            )
+                                          ])
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  forum.latest
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticStyle: {
+                                            width: "40%",
+                                            display: "inline-block",
+                                            "padding-top": "15px"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "router-link",
+                                            {
+                                              attrs: {
+                                                to: {
+                                                  name: "thread",
+                                                  params: {
+                                                    id: forum.latest.thread_id
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                            " +
+                                                  _vm._s(
+                                                    forum.latest.thread_title
+                                                  ) +
+                                                  "\n                                        "
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              " by " +
+                                                _vm._s(forum.latest.user.name) +
+                                                " ·\n                                            " +
+                                                _vm._s(
+                                                  _vm._f("friendlyDate")(
+                                                    forum.latest.created_at
+                                                  )
+                                                ) +
+                                                " \n                                        "
+                                            )
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            }),
+            0
+          )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/home.vue?vue&type=template&id=bb7a9770&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/home.vue?vue&type=template&id=bb7a9770&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("h1", [_vm._v("Plataforma Alumni")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/login.vue?vue&type=template&id=780e8960&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/login.vue?vue&type=template&id=780e8960&scoped=true& ***!
@@ -74127,7 +74442,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("Login")]),
+      _c("div", { staticClass: "card-header" }, [_vm._v("Inicio de sesión")]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-6 offset-md-3" }, [
@@ -90723,17 +91038,28 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/pages/categories.vue":
-/*!*******************************************!*\
-  !*** ./resources/js/pages/categories.vue ***!
-  \*******************************************/
+/***/ "./resources/js/img/logo-ff5simplon-negativo-02-e1544704915542.png":
+/*!*************************************************************************!*\
+  !*** ./resources/js/img/logo-ff5simplon-negativo-02-e1544704915542.png ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo-ff5simplon-negativo-02-e1544704915542.png?43cb4724b6c43851d34c5e72e47e6f7e";
+
+/***/ }),
+
+/***/ "./resources/js/pages/faq.vue":
+/*!************************************!*\
+  !*** ./resources/js/pages/faq.vue ***!
+  \************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _categories_vue_vue_type_template_id_dc844376___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./categories.vue?vue&type=template&id=dc844376& */ "./resources/js/pages/categories.vue?vue&type=template&id=dc844376&");
-/* harmony import */ var _categories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./categories.vue?vue&type=script&lang=js& */ "./resources/js/pages/categories.vue?vue&type=script&lang=js&");
+/* harmony import */ var _faq_vue_vue_type_template_id_6ae5e03d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./faq.vue?vue&type=template&id=6ae5e03d&scoped=true& */ "./resources/js/pages/faq.vue?vue&type=template&id=6ae5e03d&scoped=true&");
+/* harmony import */ var _faq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./faq.vue?vue&type=script&lang=js& */ "./resources/js/pages/faq.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -90743,50 +91069,50 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _categories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _categories_vue_vue_type_template_id_dc844376___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _categories_vue_vue_type_template_id_dc844376___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _faq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _faq_vue_vue_type_template_id_6ae5e03d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _faq_vue_vue_type_template_id_6ae5e03d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "6ae5e03d",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/categories.vue"
+component.options.__file = "resources/js/pages/faq.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/categories.vue?vue&type=script&lang=js&":
-/*!********************************************************************!*\
-  !*** ./resources/js/pages/categories.vue?vue&type=script&lang=js& ***!
-  \********************************************************************/
+/***/ "./resources/js/pages/faq.vue?vue&type=script&lang=js&":
+/*!*************************************************************!*\
+  !*** ./resources/js/pages/faq.vue?vue&type=script&lang=js& ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_categories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./categories.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/categories.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_categories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_faq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./faq.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/faq.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_faq_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/categories.vue?vue&type=template&id=dc844376&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/pages/categories.vue?vue&type=template&id=dc844376& ***!
-  \**************************************************************************/
+/***/ "./resources/js/pages/faq.vue?vue&type=template&id=6ae5e03d&scoped=true&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/faq.vue?vue&type=template&id=6ae5e03d&scoped=true& ***!
+  \*******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_categories_vue_vue_type_template_id_dc844376___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./categories.vue?vue&type=template&id=dc844376& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/categories.vue?vue&type=template&id=dc844376&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_categories_vue_vue_type_template_id_dc844376___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_faq_vue_vue_type_template_id_6ae5e03d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./faq.vue?vue&type=template&id=6ae5e03d&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/faq.vue?vue&type=template&id=6ae5e03d&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_faq_vue_vue_type_template_id_6ae5e03d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_categories_vue_vue_type_template_id_dc844376___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_faq_vue_vue_type_template_id_6ae5e03d_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -90856,6 +91182,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_forum_vue_vue_type_template_id_b6a285f0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_forum_vue_vue_type_template_id_b6a285f0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/forumhome.vue":
+/*!******************************************!*\
+  !*** ./resources/js/pages/forumhome.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _forumhome_vue_vue_type_template_id_0ea17267___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./forumhome.vue?vue&type=template&id=0ea17267& */ "./resources/js/pages/forumhome.vue?vue&type=template&id=0ea17267&");
+/* harmony import */ var _forumhome_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./forumhome.vue?vue&type=script&lang=js& */ "./resources/js/pages/forumhome.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _forumhome_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _forumhome_vue_vue_type_template_id_0ea17267___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _forumhome_vue_vue_type_template_id_0ea17267___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/forumhome.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/forumhome.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/pages/forumhome.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_forumhome_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./forumhome.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/forumhome.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_forumhome_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/forumhome.vue?vue&type=template&id=0ea17267&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/pages/forumhome.vue?vue&type=template&id=0ea17267& ***!
+  \*************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_forumhome_vue_vue_type_template_id_0ea17267___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./forumhome.vue?vue&type=template&id=0ea17267& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/forumhome.vue?vue&type=template&id=0ea17267&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_forumhome_vue_vue_type_template_id_0ea17267___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_forumhome_vue_vue_type_template_id_0ea17267___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/home.vue":
+/*!*************************************!*\
+  !*** ./resources/js/pages/home.vue ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _home_vue_vue_type_template_id_bb7a9770_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.vue?vue&type=template&id=bb7a9770&scoped=true& */ "./resources/js/pages/home.vue?vue&type=template&id=bb7a9770&scoped=true&");
+/* harmony import */ var _home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home.vue?vue&type=script&lang=js& */ "./resources/js/pages/home.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _home_vue_vue_type_template_id_bb7a9770_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _home_vue_vue_type_template_id_bb7a9770_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "bb7a9770",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/home.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/home.vue?vue&type=script&lang=js&":
+/*!**************************************************************!*\
+  !*** ./resources/js/pages/home.vue?vue&type=script&lang=js& ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./home.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/home.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/home.vue?vue&type=template&id=bb7a9770&scoped=true&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/pages/home.vue?vue&type=template&id=bb7a9770&scoped=true& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_home_vue_vue_type_template_id_bb7a9770_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./home.vue?vue&type=template&id=bb7a9770&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/home.vue?vue&type=template&id=bb7a9770&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_home_vue_vue_type_template_id_bb7a9770_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_home_vue_vue_type_template_id_bb7a9770_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -91097,11 +91561,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_login__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pages/login */ "./resources/js/pages/login.vue");
 /* harmony import */ var _pages_register__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/register */ "./resources/js/pages/register.vue");
-/* harmony import */ var _pages_categories__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/categories */ "./resources/js/pages/categories.vue");
-/* harmony import */ var _pages_forum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/forum */ "./resources/js/pages/forum.vue");
-/* harmony import */ var _pages_thread_create__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/thread.create */ "./resources/js/pages/thread.create.vue");
+/* harmony import */ var _pages_home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/home */ "./resources/js/pages/home.vue");
+/* harmony import */ var _pages_forumhome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/forumhome */ "./resources/js/pages/forumhome.vue");
+/* harmony import */ var _pages_forum__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/forum */ "./resources/js/pages/forum.vue");
+/* harmony import */ var _pages_thread_create__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/thread.create */ "./resources/js/pages/thread.create.vue");
+/* harmony import */ var _pages_faq__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/faq */ "./resources/js/pages/faq.vue");
 
- // import Home from './pages/home';
+
+
 
 
 
@@ -91116,25 +91583,25 @@ var routes = [{
   name: 'register'
 }, {
   path: '/forum/:id',
-  component: _pages_forum__WEBPACK_IMPORTED_MODULE_3__["default"],
+  component: _pages_forum__WEBPACK_IMPORTED_MODULE_4__["default"],
   name: 'forum'
 }, {
   path: '/thread/create',
-  component: _pages_thread_create__WEBPACK_IMPORTED_MODULE_4__["default"],
+  component: _pages_thread_create__WEBPACK_IMPORTED_MODULE_5__["default"],
   name: 'thread.create'
 }, {
   path: '/',
-  component: _pages_categories__WEBPACK_IMPORTED_MODULE_2__["default"],
-  name: 'categories'
-}
-/*
-{
-    path: '/',
-    component: Home,
-    name: 'home'
-}
-*/
-];
+  component: _pages_home__WEBPACK_IMPORTED_MODULE_2__["default"],
+  name: 'home'
+}, {
+  path: '/forumhome',
+  component: _pages_forumhome__WEBPACK_IMPORTED_MODULE_3__["default"],
+  name: 'forumhome'
+}, {
+  path: '/faq',
+  component: _pages_faq__WEBPACK_IMPORTED_MODULE_6__["default"],
+  name: 'faq'
+}];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
 /***/ }),
@@ -91176,8 +91643,8 @@ var Helper = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\soliv\OneDrive\Escritorio\Alumni\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\soliv\OneDrive\Escritorio\Alumni\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\PHPprojects\Alumni\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\PHPprojects\Alumni\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
