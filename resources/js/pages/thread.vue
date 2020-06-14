@@ -23,7 +23,7 @@
                         <!-- Posts -->
 
                         <div v-for="(post,index) in thread.posts.data" :key="index">
-                            <img class="image" :src="baseUrl + '/images/user.png'" style="vertical-align: top;"/>
+                            <img class="image" :src="baseUrl + './fake_user_avatar.jpg'" style="vertical-align: top;"/>
                             <div class="post-container">
                                 <span>{{ post.user.name }}</span>
                                 <span style="margin-left: 5px; color: #3d4852;">DICE:</span>
@@ -43,7 +43,12 @@
                         </div>
 
                         <!-- Pagination Bottom -->
-                        
+                        <pagination :total-pages="thread.posts.last_page" 
+                                    :page="currentPage"
+                                    :app="app"
+                                    v-show="thread.posts.last_page > 1"
+                                    :on-click-page="clickPage">
+                        </pagination>
 
                         <!-- Reply Button -->
 
@@ -151,7 +156,17 @@ export default {
             });
         },
 
-        /* click page func */
+        clickPage() {
+            this.app.req.get('/thread'+this.threadId+'?page='+page).then(response => {
+                this.thread = response.data;
+                this.$router.replace({
+                    name: 'thread',
+                    query: {
+                        page: page
+                    }
+                })
+            })
+        },
 
         onSubmit() {
             if(!this.body) {
@@ -186,7 +201,7 @@ export default {
                         pageToGoTo = null;
                     }
                     if(pageToGoTo) {
-                        //this.app.$pagination.clickPage(pageToGoTo);
+                        this.app.$pagination.clickPage(pageToGoTo);
                     }
                 })
             }
