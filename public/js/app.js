@@ -2124,6 +2124,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'fora',
@@ -2163,15 +2170,31 @@ __webpack_require__.r(__webpack_exports__);
 
         if (response.data.id) {
           _this.forum = response.data;
-          _this.lastPage = response.data.threads.lastPage;
+          _this.lastPage = response.data.threads.last_page;
         }
       });
     },
-    //clickPage(),
     goToCreate: function goToCreate(forum) {
       this.app.currentForum = forum;
       this.$router.push({
         name: 'thread.create'
+      });
+    },
+    clickPage: function clickPage(page) {
+      var _this2 = this;
+
+      this.app.req.get('/forum/' + this.forumId + '?page=' + page).then(function (response) {
+        if (response.data.id) {
+          _this2.forum = response.data;
+          _this2.lastPage = response.data.threads.last_page;
+
+          _this2.$router.replace({
+            name: 'forum',
+            query: {
+              page: page
+            }
+          });
+        }
       });
     }
   }
@@ -74607,8 +74630,18 @@ var render = function() {
                         )
                       }),
                       1
-                    )
-                  ]
+                    ),
+                    _vm._v(" "),
+                    _c("pagination", {
+                      attrs: {
+                        "total-pages": _vm.last_page,
+                        page: _vm.currentPage,
+                        app: _vm.app,
+                        "on-click-page": _vm.clickPage
+                      }
+                    })
+                  ],
+                  1
                 )
               ]),
               _vm._v(" "),

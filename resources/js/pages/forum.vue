@@ -70,11 +70,18 @@
                                 </div>
                             </router-link>
                         </div>
-                        <!-- pagination -->
                         
+                        <!-- pagination -->
+                        <pagination :total-pages="last_page" 
+                                    :page="currentPage"
+                                    :app="app"
+                                    :on-click-page="clickPage">
+                        </pagination>
+
                     </div>
                 </div>
                 <div class="col-md-4">
+                    
                     <!-- active threads -->
                     <active-threads :app="app"></active-threads>
                 </div>
@@ -124,19 +131,32 @@ export default {
 
                 if (response.data.id) {
                     this.forum = response.data;
-                    this.lastPage = response.data.threads.lastPage;
+                    this.lastPage = response.data.threads.last_page;
                 }
                 
             });
         },
-
-        //clickPage(),
 
         goToCreate(forum) {
             this.app.currentForum = forum;
             this.$router.push({
                 name: 'thread.create'
             });
+        },
+
+        clickPage(page) {
+            this.app.req.get('/forum/'+this.forumId+'?page='+page).then(response => {
+                if(response.data.id) {
+                    this.forum = response.data;
+                    this.lastPage = response.data.threads.last_page;
+                    this.$router.replace({
+                        name: 'forum',
+                        query: {
+                            page: page
+                        }
+                    })
+                }
+            })
         }
     }
 }
