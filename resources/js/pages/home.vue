@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <h1>Plataforma Alumni</h1>
             </div>
-        </div>
+        </div> 
     </div>
 </template>
 

@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('app');
 });
-
 Route::prefix('auth')->group(function(){
     Route::post('register', 'UserController@register');
     Route::post('login', 'UserController@login');
@@ -31,3 +30,9 @@ Route::prefix('thread')->group(function(){
     Route::post('create', 'ThreadController@create');
     Route::get('/{id}', 'ThreadController@getThreadById');
 });
+
+Route::get('init', 'AppController@init');
+Route::post('login', 'AppController@login');
+Route::post('register', 'AppController@register');
+Route::post('logout', 'AppController@logout');
+
