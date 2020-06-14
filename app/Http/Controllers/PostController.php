@@ -18,8 +18,9 @@ class PostController extends Controller
         $post->save();
 
         $post['user'] = Auth::user();
+        
         $thread = Thread::find($post->thread_id);
-        $thread-> replies++;
+        $thread->replies++;
         $thread->save();
 
         $post['thread'] = $thread;

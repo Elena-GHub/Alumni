@@ -27,9 +27,9 @@
                 }),
                 user: null,
                 currentForum: null,
-                activeThreads : [],
-                threadCount: 0
-            }
+                activeThreads: [],
+                threadsCount: 0
+            };
         },
         mounted(){
             this.init();
@@ -39,10 +39,14 @@
             {
                 this.loading = true;
 
-                this.req.get('init').then((response) => {
+                this.req.get('auth/init').then(response => {
                     this.loading = false;
                     this.initiated = true;
 
+                    this.threadCount = response.data.threadCount;
+                    this.activeThreads = response.data.activeThreads;
+                    
+                    console.log('this is what I print '+ response.data.user)
                     if (response.data.user)
                     {
                         this.user = response.data.user;

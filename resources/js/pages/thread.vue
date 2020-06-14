@@ -23,7 +23,7 @@
                         <!-- Posts -->
 
                         <div v-for="(post,index) in thread.posts.data" :key="index">
-                            <img class="image" :src="baseUrl + './fake_user_avatar.jpg'" style="vertical-align: top;"/>
+                            <img class="image" :src="baseUrl + '/fake_user_avatar.jpg'" style="vertical-align: top;"/>
                             <div class="post-container">
                                 <span>{{ post.user.name }}</span>
                                 <span style="margin-left: 5px; color: #3d4852;">DICE:</span>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-md-4">
                         <!-- active threads component -->
-                        
+                        <active-threads :app="app"></active-threads>    
                     </div>
                 </div>
             </div>
@@ -97,10 +97,11 @@ import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
 
 import { quillEditor } from "vue-quill-editor";
+import ActiveThreads from "../components/active-threads";
 
 export default {
     name: 'thread',
-    componentes: { quillEditor },
+    components: { quillEditor, ActiveThreads },
     props: ['app'],
     data() {
         return {
@@ -148,7 +149,7 @@ export default {
 
             this.app.req.get('thread/'+this.threadId+'?page='+page).then(response => {
                 this.loading = false;
-                console.log(response.data)
+               
                 if(response.data.id) {
                     this.thread = response.data;
                     this.totalPages = this.thread.posts.last_page;

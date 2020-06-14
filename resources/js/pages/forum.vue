@@ -71,10 +71,12 @@
                             </router-link>
                         </div>
                         <!-- pagination -->
+                        
                     </div>
                 </div>
                 <div class="col-md-4">
-                     <!-- active threads -->
+                    <!-- active threads -->
+                    <active-threads :app="app"></active-threads>
                 </div>
             </div>
         </div>
@@ -82,9 +84,11 @@
 </template>
 
 <script>
+import ActiveThreads from "../components/active-threads";
 
 export default {
     name: 'fora',
+    components: { ActiveThreads },
     props: ['app'],
     data() {
         return {
