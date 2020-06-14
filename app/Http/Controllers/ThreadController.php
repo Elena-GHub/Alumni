@@ -9,14 +9,14 @@ use App\User;
  
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+ 
 class ThreadController extends Controller
 {
     public function getThreadById($id)
     {
         $thread = Thread::with('user', 'forum')->where('id', $id)->first();
 
-        $posts = Post::with('user')->where('thread_id', $thread_id)->paginate(10);
+        $posts = Post::with('user')->where('thread_id', $thread->id)->paginate(10);
         
         $thread['posts'] = $posts;
         
@@ -30,10 +30,10 @@ class ThreadController extends Controller
         ->select('threads.*')
         ->latest()
         ->paginate(10);
-
+// Lo que estaba puesto era ... ->where('thread_id', $thread_id); pero es $thread->id
         foreach($threads as $thread)
         {
-            $post = Post::with('user')->where('thread_id', $thread_id)->latest()->first();
+            $post = Post::with('user')->where('thread_id', $thread->id)->latest()->first();
             $thread['latestPost'] = $post;
         }
         

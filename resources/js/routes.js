@@ -4,6 +4,7 @@ import Register from './pages/register';
 import Categories from './pages/categories'; 
 import Forum from './pages/forum';
 import ThreadCreate from './pages/thread.create';
+import Thread from './pages/thread';
 
 const routes = [
     {
@@ -28,6 +29,12 @@ const routes = [
         path: '/thread/create',
         component: ThreadCreate,
         name: 'thread.create'
+    },
+
+    {
+        path: '/thread/:id',
+        component: Thread,
+        name: 'thread'
     },
 
     {
