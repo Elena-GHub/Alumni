@@ -6,13 +6,13 @@
     <button class="btn btn-info mb-2" @click="getJobOffers"> Update </button>
     <button class="btn btn-primary mb-2" @click="showModalCreate()"> Create </button>
 
-    <div class="input-group md-form form-sm form-2 pl-0">
-        <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search" v-model="search">
-    </div>
+    <search-bar ref="search"></search-bar>
+
     <br>
+
     <div>
         <ul class="list-group">
-            <li class="list-group-item" v-bind:key="i" v-for="(jobOffer, i) in filteredJobOffers">
+            <li class="list-group-item" v-bind:key="i" v-for="(jobOffer, i) in filterJobOffers">
                 <u>Position:</u> {{jobOffer.position}} <br>
                 <u>Company:</u> {{jobOffer.empresa.name}} <br>
                 <u>Location:</u> {{jobOffer.location}} <br>
@@ -81,6 +81,8 @@
 </template>
 
 <script>
+    import Searchbar from './SearchBar.vue'
+
     export default {
       name: 'OffersList',
         data(){
@@ -103,10 +105,7 @@
                 });
             },
             clearJobOffer() {
-                this.jobOfferToBeCreated = {};
-                //this.jobOfferList = {
-                //    empresa: {}
-                //}
+                this.jobOfferToBeCreated = {}
             },
             showModalEdit(jobOffer) {
                 this.jobOffer = jobOffer
@@ -155,13 +154,10 @@
                     this.empresaList = response.data;
                 });
             },
+           
         },
         computed: {
-            filteredJobOffers() {
-                return this.jobOfferList.filter((jobOffer) => {
-                    return jobOffer.position.toLowerCase().match(this.search.toLowerCase());
-                });
-            }
+
         },
 
         mounted() {

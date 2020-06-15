@@ -1941,6 +1941,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SearchBar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchBar.vue */ "./resources/js/components/SearchBar.vue");
 //
 //
 //
@@ -2023,6 +2024,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'OffersList',
   data: function data() {
@@ -2045,9 +2047,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     clearJobOffer: function clearJobOffer() {
-      this.jobOfferToBeCreated = {}; //this.jobOfferList = {
-      //    empresa: {}
-      //}
+      this.jobOfferToBeCreated = {};
     },
     showModalEdit: function showModalEdit(jobOffer) {
       this.jobOffer = jobOffer;
@@ -2112,18 +2112,52 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
+  computed: {},
+  mounted: function mounted() {
+    this.getJobOffers();
+    this.getEmpresas();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchBar.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SearchBar.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'SearchBar',
+  data: function data() {
+    return {
+      search: ''
+    };
+  },
   computed: {
-    filteredJobOffers: function filteredJobOffers() {
-      var _this7 = this;
+    filterJobOffers: function filterJobOffers() {
+      var _this = this;
 
       return this.jobOfferList.filter(function (jobOffer) {
-        return jobOffer.position.toLowerCase().match(_this7.search.toLowerCase());
+        return jobOffer.position.toLowerCase().match(_this.search.toLowerCase());
       });
     }
   },
   mounted: function mounted() {
-    this.getJobOffers();
-    this.getEmpresas();
+    console.log('Component mounted.');
   }
 });
 
@@ -37719,28 +37753,410 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h2", [_vm._v("Job offers")]),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "btn btn-info mb-2", on: { click: _vm.getJobOffers } },
-      [_vm._v(" Update ")]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary mb-2",
-        on: {
-          click: function($event) {
-            return _vm.showModalCreate()
+  return _c(
+    "div",
+    [
+      _c("h2", [_vm._v("Job offers")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-info mb-2", on: { click: _vm.getJobOffers } },
+        [_vm._v(" Update ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary mb-2",
+          on: {
+            click: function($event) {
+              return _vm.showModalCreate()
+            }
           }
-        }
-      },
-      [_vm._v(" Create ")]
-    ),
-    _vm._v(" "),
+        },
+        [_vm._v(" Create ")]
+      ),
+      _vm._v(" "),
+      _c("search-bar", { ref: "search" }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "ul",
+          { staticClass: "list-group" },
+          _vm._l(_vm.filterJobOffers, function(jobOffer, i) {
+            return _c("li", { key: i, staticClass: "list-group-item" }, [
+              _c("u", [_vm._v("Position:")]),
+              _vm._v(" " + _vm._s(jobOffer.position) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("u", [_vm._v("Company:")]),
+              _vm._v(" " + _vm._s(jobOffer.empresa.name) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("u", [_vm._v("Location:")]),
+              _vm._v(" " + _vm._s(jobOffer.location) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("u", [_vm._v("Tags:")]),
+              _vm._v(" Laravel, PHP "),
+              _c("br"),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger mb-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.destroy(jobOffer)
+                    }
+                  }
+                },
+                [_vm._v(" Delete ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-secondary mb-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.edit(jobOffer)
+                    }
+                  }
+                },
+                [_vm._v(" Edit ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary mb-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.showModalDetails(jobOffer)
+                    }
+                  }
+                },
+                [_vm._v(" Show more ")]
+              )
+            ])
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal fade", attrs: { id: "create" } }, [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-body" }, [
+              _c("label", [_vm._v(" Position: ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.jobOfferToBeCreated.position,
+                    expression: "jobOfferToBeCreated.position"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", name: "position" },
+                domProps: { value: _vm.jobOfferToBeCreated.position },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.jobOfferToBeCreated,
+                      "position",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", [_vm._v(" Company: ")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.jobOfferToBeCreated.empresa_id,
+                      expression: "jobOfferToBeCreated.empresa_id"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "empresa_id" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.jobOfferToBeCreated,
+                        "empresa_id",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                _vm._l(_vm.empresaList, function(empresa, i) {
+                  return _c(
+                    "option",
+                    { key: i, domProps: { value: empresa.id } },
+                    [_vm._v(" " + _vm._s(empresa.name) + " ")]
+                  )
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c("label", [_vm._v(" Location: ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.jobOfferToBeCreated.location,
+                    expression: "jobOfferToBeCreated.location"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", name: "location" },
+                domProps: { value: _vm.jobOfferToBeCreated.location },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.jobOfferToBeCreated,
+                      "location",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", [_vm._v(" Description: ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.jobOfferToBeCreated.description,
+                    expression: "jobOfferToBeCreated.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", name: "description" },
+                domProps: { value: _vm.jobOfferToBeCreated.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.jobOfferToBeCreated,
+                      "description",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    return _vm.create()
+                  }
+                }
+              })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal fade", attrs: { id: "details" } }, [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-body" }, [
+              _c("h5", [_vm._v(_vm._s(_vm.jobOffer.position))]),
+              _c("br"),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Company:")]),
+              _vm._v(" " + _vm._s(_vm.jobOffer.empresa.name) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Location:")]),
+              _vm._v(" " + _vm._s(_vm.jobOffer.location) + " "),
+              _c("br"),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Description:")]),
+              _vm._v(" " + _vm._s(_vm.jobOffer.description) + " "),
+              _c("br")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal fade", attrs: { id: "edit" } }, [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-body" }, [
+              _c("label", [_vm._v(" Position: ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.jobOffer.position,
+                    expression: "jobOffer.position"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", name: "position" },
+                domProps: { value: _vm.jobOffer.position },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.jobOffer, "position", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", [_vm._v(" Company ID: ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.jobOffer.empresa.id,
+                    expression: "jobOffer.empresa.id"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "number", name: "empresa_id" },
+                domProps: { value: _vm.jobOffer.empresa.id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.jobOffer.empresa, "id", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", [_vm._v(" Location: ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.jobOffer.location,
+                    expression: "jobOffer.location"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", name: "location" },
+                domProps: { value: _vm.jobOffer.location },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.jobOffer, "location", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", [_vm._v(" Description: ")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.jobOffer.description,
+                    expression: "jobOffer.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", name: "description" },
+                domProps: { value: _vm.jobOffer.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.jobOffer, "description", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    return _vm.update(_vm.jobOffer)
+                  }
+                }
+              })
+            ])
+          ])
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchBar.vue?vue&type=template&id=6849e9f0&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SearchBar.vue?vue&type=template&id=6849e9f0& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
     _c("div", { staticClass: "input-group md-form form-sm form-2 pl-0" }, [
       _c("input", {
         directives: [
@@ -37763,356 +38179,6 @@ var render = function() {
           }
         }
       })
-    ]),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c("div", [
-      _c(
-        "ul",
-        { staticClass: "list-group" },
-        _vm._l(_vm.filteredJobOffers, function(jobOffer, i) {
-          return _c("li", { key: i, staticClass: "list-group-item" }, [
-            _c("u", [_vm._v("Position:")]),
-            _vm._v(" " + _vm._s(jobOffer.position) + " "),
-            _c("br"),
-            _vm._v(" "),
-            _c("u", [_vm._v("Company:")]),
-            _vm._v(" " + _vm._s(jobOffer.empresa.name) + " "),
-            _c("br"),
-            _vm._v(" "),
-            _c("u", [_vm._v("Location:")]),
-            _vm._v(" " + _vm._s(jobOffer.location) + " "),
-            _c("br"),
-            _vm._v(" "),
-            _c("u", [_vm._v("Tags:")]),
-            _vm._v(" Laravel, PHP "),
-            _c("br"),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-danger mb-2",
-                on: {
-                  click: function($event) {
-                    return _vm.destroy(jobOffer)
-                  }
-                }
-              },
-              [_vm._v(" Delete ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-secondary mb-2",
-                on: {
-                  click: function($event) {
-                    return _vm.edit(jobOffer)
-                  }
-                }
-              },
-              [_vm._v(" Edit ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary mb-2",
-                on: {
-                  click: function($event) {
-                    return _vm.showModalDetails(jobOffer)
-                  }
-                }
-              },
-              [_vm._v(" Show more ")]
-            )
-          ])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal fade", attrs: { id: "create" } }, [
-      _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-body" }, [
-            _c("label", [_vm._v(" Position: ")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.jobOfferToBeCreated.position,
-                  expression: "jobOfferToBeCreated.position"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "position" },
-              domProps: { value: _vm.jobOfferToBeCreated.position },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.jobOfferToBeCreated,
-                    "position",
-                    $event.target.value
-                  )
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("label", [_vm._v(" Company: ")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.jobOfferToBeCreated.empresa_id,
-                    expression: "jobOfferToBeCreated.empresa_id"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { name: "empresa_id" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.jobOfferToBeCreated,
-                      "empresa_id",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              _vm._l(_vm.empresaList, function(empresa, i) {
-                return _c(
-                  "option",
-                  { key: i, domProps: { value: empresa.id } },
-                  [_vm._v(" " + _vm._s(empresa.name) + " ")]
-                )
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _c("label", [_vm._v(" Location: ")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.jobOfferToBeCreated.location,
-                  expression: "jobOfferToBeCreated.location"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "location" },
-              domProps: { value: _vm.jobOfferToBeCreated.location },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.jobOfferToBeCreated,
-                    "location",
-                    $event.target.value
-                  )
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("label", [_vm._v(" Description: ")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.jobOfferToBeCreated.description,
-                  expression: "jobOfferToBeCreated.description"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "description" },
-              domProps: { value: _vm.jobOfferToBeCreated.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.jobOfferToBeCreated,
-                    "description",
-                    $event.target.value
-                  )
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "submit" },
-              on: {
-                click: function($event) {
-                  return _vm.create()
-                }
-              }
-            })
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal fade", attrs: { id: "details" } }, [
-      _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-body" }, [
-            _c("h5", [_vm._v(_vm._s(_vm.jobOffer.position))]),
-            _c("br"),
-            _vm._v(" "),
-            _c("h5", [_vm._v("Company:")]),
-            _vm._v(" " + _vm._s(_vm.jobOffer.empresa.name) + " "),
-            _c("br"),
-            _vm._v(" "),
-            _c("h5", [_vm._v("Location:")]),
-            _vm._v(" " + _vm._s(_vm.jobOffer.location) + " "),
-            _c("br"),
-            _vm._v(" "),
-            _c("h5", [_vm._v("Description:")]),
-            _vm._v(" " + _vm._s(_vm.jobOffer.description) + " "),
-            _c("br")
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal fade", attrs: { id: "edit" } }, [
-      _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-body" }, [
-            _c("label", [_vm._v(" Position: ")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.jobOffer.position,
-                  expression: "jobOffer.position"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "position" },
-              domProps: { value: _vm.jobOffer.position },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.jobOffer, "position", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("label", [_vm._v(" Company ID: ")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.jobOffer.empresa.id,
-                  expression: "jobOffer.empresa.id"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "number", name: "empresa_id" },
-              domProps: { value: _vm.jobOffer.empresa.id },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.jobOffer.empresa, "id", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("label", [_vm._v(" Location: ")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.jobOffer.location,
-                  expression: "jobOffer.location"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "location" },
-              domProps: { value: _vm.jobOffer.location },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.jobOffer, "location", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("label", [_vm._v(" Description: ")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.jobOffer.description,
-                  expression: "jobOffer.description"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", name: "description" },
-              domProps: { value: _vm.jobOffer.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.jobOffer, "description", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "submit" },
-              on: {
-                click: function($event) {
-                  return _vm.update(_vm.jobOffer)
-                }
-              }
-            })
-          ])
-        ])
-      ])
     ])
   ])
 }
@@ -50294,7 +50360,8 @@ module.exports = function(module) {
 
 var map = {
 	"./components/ExampleComponent.vue": "./resources/js/components/ExampleComponent.vue",
-	"./components/OffersList.vue": "./resources/js/components/OffersList.vue"
+	"./components/OffersList.vue": "./resources/js/components/OffersList.vue",
+	"./components/SearchBar.vue": "./resources/js/components/SearchBar.vue"
 };
 
 
@@ -50543,6 +50610,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/SearchBar.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/SearchBar.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SearchBar_vue_vue_type_template_id_6849e9f0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchBar.vue?vue&type=template&id=6849e9f0& */ "./resources/js/components/SearchBar.vue?vue&type=template&id=6849e9f0&");
+/* harmony import */ var _SearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchBar.vue?vue&type=script&lang=js& */ "./resources/js/components/SearchBar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SearchBar_vue_vue_type_template_id_6849e9f0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SearchBar_vue_vue_type_template_id_6849e9f0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SearchBar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SearchBar.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/SearchBar.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SearchBar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchBar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SearchBar.vue?vue&type=template&id=6849e9f0&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/SearchBar.vue?vue&type=template&id=6849e9f0& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchBar_vue_vue_type_template_id_6849e9f0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SearchBar.vue?vue&type=template&id=6849e9f0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SearchBar.vue?vue&type=template&id=6849e9f0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchBar_vue_vue_type_template_id_6849e9f0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SearchBar_vue_vue_type_template_id_6849e9f0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -50561,8 +50697,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\FactoriaF5\Projects\FactoriaF5\Alumni\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\FactoriaF5\Projects\FactoriaF5\Alumni\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/francisco/Desktop/Alumni/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/francisco/Desktop/Alumni/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
