@@ -72,7 +72,7 @@
                         </div>
                         
                         <!-- pagination -->
-                        <pagination :total-pages="last_page" 
+                        <pagination :total-pages="lastPage" 
                                     :page="currentPage"
                                     :app="app"
                                     :on-click-page="clickPage">

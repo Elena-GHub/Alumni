@@ -74634,7 +74634,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("pagination", {
                       attrs: {
-                        "total-pages": _vm.last_page,
+                        "total-pages": _vm.lastPage,
                         page: _vm.currentPage,
                         app: _vm.app,
                         "on-click-page": _vm.clickPage
