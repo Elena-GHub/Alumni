@@ -39,8 +39,6 @@
                                 <div>
                                     <!-- image -->
                                 
-                                    
-
                                     <div style="display: intline-block; vertical-align: bottom; margin-left: 10px">
                                         <h4> {{ thread.title | shortTitle }} </h4>
                                         <span>Autor: {{ thread.user.name }} </span>
@@ -52,9 +50,7 @@
                                         </span>
                                        -->
                                         
-                                    </div>
-
-                                    
+                                    </div>  
                                 </div>
                                 
                                 <div style="text-align: center">
