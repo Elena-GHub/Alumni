@@ -153,6 +153,7 @@ export default {
         clickPage() {
             this.app.req.get('/thread'+this.threadId+'?page='+page).then(response => {
                 this.thread = response.data;
+                console.log(response.data)
                 this.$router.replace({
                     name: 'thread',
                     query: {

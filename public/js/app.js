@@ -2918,6 +2918,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.app.req.get('/thread' + this.threadId + '?page=' + page).then(function (response) {
         _this2.thread = response.data;
+        console.log(response.data);
 
         _this2.$router.replace({
           name: 'thread',
