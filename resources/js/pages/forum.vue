@@ -7,8 +7,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <router-link :to="{ name: 'categories' }">
-                                    Home
+                                <router-link :to="{ name: 'forumhome' }">
+                                    Inicio foro
                                 </router-link>
                             </li>
                             <li class="breadcrumb-item">
@@ -43,12 +43,10 @@
 
                                     <div style="display: intline-block; vertical-align: bottom; margin-left: 10px">
                                         <h4> {{ thread.title | shortTitle }} </h4>
-                                        
-                                        <!-- cannot read property 'user' of null 
-                                        
                                         <span>Autor: {{ thread.user.name }} </span>
                                         <br/>
-                                        <span>
+                                         <!-- cannot read property 'user' of null 
+                                         <span>
                                             Último comentario: {{ thread.latestPost.user.name }}  &middot; 
                                             {{ thread.latestPost.created_at | friendlyDate }}
                                         </span>
@@ -70,11 +68,20 @@
                                 </div>
                             </router-link>
                         </div>
+                        
                         <!-- pagination -->
+                        <pagination :total-pages="last_page" 
+                                    :page="currentPage"
+                                    :app="app"
+                                    :on-click-page="clickPage">
+                        </pagination>
+
                     </div>
                 </div>
                 <div class="col-md-4">
-                     <!-- active threads -->
+                    
+                    <!-- active threads -->
+                    <active-threads :app="app"></active-threads>
                 </div>
             </div>
         </div>
@@ -82,9 +89,10 @@
 </template>
 
 <script>
-
+import ActiveThreads from "../components/active-threads";
 export default {
     name: 'fora',
+    components: { ActiveThreads },
     props: ['app'],
     data() {
         return {
@@ -100,45 +108,49 @@ export default {
         let $this = this;
         this.getForum();
     },
-
     filters: {
         friendlyDate(value) {
             return moment(value).fromNow();
             },
-
         shortTitle(value) {
             return value.length > 35 ? value.substring(0, 35) + "..." : value;
         }
     },
-
     methods: {
         getForum() {
             this.loading = true;
-
             this.app.req.get('forum/'+this.forumId).then(response => {
                 this.loading = false;
-
                 if (response.data.id) {
                     this.forum = response.data;
-                    this.lastPage = response.data.threads.lastPage;
+                    this.lastPage = response.data.threads.last_page;
                 }
                 
             });
         },
-
-        //clickPage(),
-
         goToCreate(forum) {
             this.app.currentForum = forum;
             this.$router.push({
                 name: 'thread.create'
             });
+        },
+        clickPage(page) {
+            this.app.req.get('/forum/'+this.forumId+'?page='+page).then(response => {
+                if(response.data.id) {
+                    this.forum = response.data;
+                    this.lastPage = response.data.threads.last_page;
+                    this.$router.replace({
+                        name: 'forum',
+                        query: {
+                            page: page
+                        }
+                    })
+                }
+            })
         }
     }
 }
-
 </script>
 
 <style>
-
 </style>

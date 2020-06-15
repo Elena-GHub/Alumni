@@ -23,7 +23,7 @@
                                         </div>
                                         <div style="width: 20%; display: inline-block; text-align: center">
                                             <span style="line-height: 75px">
-                                                {{ forum.views }} / <strong> {{ forum.replies -1 }} </strong>
+                                                {{ forum.views }} / <strong> {{ forum.replies }} </strong>
                                             </span>
                                         </div>
                                         <div style="width: 40%; display: inline-block; padding-top: 15px" v-if="forum.latest">

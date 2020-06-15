@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         factory(\App\Category::class)->create(['title' => 'Empresas']);
         factory(\App\Category::class)->create(['title' => 'Proyectos']);
         factory(\App\Category::class)->create(['title' => 'Rincón chill-out']);
-        factory(\App\Forum::class, 10)->create();        
-        factory(\App\Thread::class, 20)->create();
-        factory(\App\Post::class, 20)->create();
+        factory(\App\Forum::class, 5)->create();        
+        factory(\App\Thread::class, 5)->create();
+        factory(\App\Post::class, 50)->create();
     }
 }

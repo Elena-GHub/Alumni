@@ -16,7 +16,7 @@ class ThreadController extends Controller
     {
         $thread = Thread::with('user', 'forum')->where('id', $id)->first();
 
-        $posts = Post::with('user')->where('thread_id', $thread_id)->paginate(10);
+        $posts = Post::with('user')->where('thread_id', $thread->id)->paginate(10);
         
         $thread['posts'] = $posts;
         
@@ -33,7 +33,7 @@ class ThreadController extends Controller
 
         foreach($threads as $thread)
         {
-            $post = Post::with('user')->where('thread_id', $thread_id)->latest()->first();
+            $post = Post::with('user')->where('thread_id', $thread->id)->latest()->first();
             $thread['latestPost'] = $post;
         }
         
