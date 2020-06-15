@@ -27,7 +27,7 @@
                 }),
                 user: null,
                 currentForum: null,
-                activeThreads : [],
+                activeThreads: [],
                 threadCount: 0
             }
         },

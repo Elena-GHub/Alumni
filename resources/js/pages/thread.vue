@@ -55,7 +55,7 @@
                         <div v-if="app.user">
                             <button v-if="!replyMode" @click="replyMode=true"
                                     type="button" class="btn btn-lg btn-success">
-                                Envía
+                                Responder
                             </button>
 
                             <button v-else @click="replyMode=false"
@@ -77,7 +77,7 @@
                                               :options="editorOption">
                                 </quill-editor>
 
-                                <button class="btn btn-lg btn-success float-right" style="margin-bottom: 50px">Responder</button>
+                                <button class="btn btn-lg btn-success float-right" style="margin-bottom: 50px">Enviar</button>
                             </form>
                         </div>
                     </div>
@@ -97,6 +97,7 @@ import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
 import { quillEditor } from "vue-quill-editor";
 import ActiveThreads from "../components/active-threads";
+
 export default {
     name: 'thread',
     components: { quillEditor, ActiveThreads },

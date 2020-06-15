@@ -3,24 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category; 
+use App\ForumCategory; 
 use App\Forum;
 use App\Post;
 use App\User;
 
-class CategoryController extends Controller
+class ForumCategoryController extends Controller
 {
-    public function getCategories(Request $request)
+    public function getForumCategories(Request $request)
     {
-        $categories = Category::with('fora')->get();
+        $forumCategories = ForumCategory::with('fora')->get();
 
-        for ($i = 0; $i < count($categories); $i++)
+        for ($i = 0; $i < count($forumCategories); $i++)
         {
-            $currentCategory = $categories[$i];
+            $currentForumCategory = $forumCategories[$i];
 
-            for ($j = 0; $j < count($currentCategory['fora']); $j++)
+            for ($j = 0; $j < count($currentForumCategory['fora']); $j++)
             {
-                $currentForum = $currentCategory['fora'][$j];
+                $currentForum = $currentForumCategory['fora'][$j];
                 
                 $currentForum['latest'] = Post::leftJoin('threads', 'posts.thread_id', '=', 'threads.id')
                 ->where('threads.forum_id', '=', $currentForum->id)
@@ -39,6 +39,6 @@ class CategoryController extends Controller
             }
         }
         
-        return response()->json($categories, 200);
+        return response()->json($forumCategories, 200);
     }
 }
