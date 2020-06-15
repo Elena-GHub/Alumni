@@ -21,7 +21,7 @@ Route::prefix('auth')->group(function(){
     Route::get('init', 'UserController@init');
 });
 
-Route::get('categories', 'CategoryController@getCategories');
+Route::get('forumCategories', 'ForumCategoryController@getForumCategories');
 Route::get('forum/{id}', 'ForumController@getForumById');
 Route::post('post/create', 'PostController@create');
 
@@ -35,4 +35,3 @@ Route::get('init', 'AppController@init');
 Route::post('login', 'AppController@login');
 Route::post('register', 'AppController@register');
 Route::post('logout', 'AppController@logout');
-

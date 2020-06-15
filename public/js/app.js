@@ -2185,12 +2185,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'categories',
+  name: 'forumCategories',
   components: {},
   props: ['app'],
   data: function data() {
     return {
-      categories: null,
+      forum_categories: null,
       loading: false
     };
   },
@@ -2200,16 +2200,16 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getCategories();
+    this.getForumCategories();
   },
   methods: {
-    getCategories: function getCategories() {
+    getForumCategories: function getForumCategories() {
       var _this = this;
 
       this.loading = true;
-      this.app.req.get("categories").then(function (response) {
+      this.app.req.get("forumCategories").then(function (response) {
         _this.loading = false;
-        _this.categories = response.data;
+        _this.forum_categories = response.data;
       });
     }
   }
@@ -74619,7 +74619,7 @@ var render = function() {
         ? _c("spinner")
         : _c(
             "div",
-            _vm._l(_vm.categories, function(category, index) {
+            _vm._l(_vm.forum_categories, function(forum_category, index) {
               return _c(
                 "div",
                 {
@@ -74634,7 +74634,7 @@ var render = function() {
                         _c("div", { staticClass: "card-header" }, [
                           _vm._v(
                             "\n                            " +
-                              _vm._s(category.title) +
+                              _vm._s(forum_category.title) +
                               "\n                        "
                           )
                         ]),
@@ -74643,7 +74643,10 @@ var render = function() {
                           _c(
                             "ul",
                             { staticClass: "list-group list-group-flush" },
-                            _vm._l(category.fora, function(forum, forumIndex) {
+                            _vm._l(forum_category.fora, function(
+                              forum,
+                              forumIndex
+                            ) {
                               return _c(
                                 "li",
                                 {

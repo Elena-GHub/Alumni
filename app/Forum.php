@@ -8,9 +8,9 @@ class Forum extends Model
 {
     protected $table = 'fora';
     
-    public function category()
+    public function forumCategory()
     {
-        return $this->belongsTo('App\Category', 'category_id');
+        return $this->belongsTo('App\ForumCategory', 'forum_category_id');
     }
 
     public function threads()
