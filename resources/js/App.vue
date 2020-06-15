@@ -3,7 +3,7 @@
         <navbar :app="this"></navbar>
 
         <spinner v-if="loading"></spinner>
-        <div v-else-if="initiated">
+        <div v-else-if="initiated" style="margin-top:15px">
             <router-view :app="this" />
         </div>
     </div>
@@ -28,8 +28,8 @@
                 user: null,
                 currentForum: null,
                 activeThreads: [],
-                threadsCount: 0
-            };
+                threadCount: 0
+            }
         },
         mounted(){
             this.init();

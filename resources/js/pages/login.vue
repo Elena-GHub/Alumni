@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="card">
-            <div class="card-header">Login</div>
+            <div class="card-header">Inicio de sesión</div>
             <div class="row">
 
 
@@ -109,7 +109,7 @@
                         password: this.password,
                     };
 
-                    this.app.req.post('login', data).then((response) => {
+                    this.app.req.post('auth/login', data).then((response) => {
 
                         this.loading = false;
 

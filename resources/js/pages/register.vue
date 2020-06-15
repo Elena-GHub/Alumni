@@ -162,7 +162,7 @@
                         password: this.password,
                     };
 
-                    this.app.req.post('register', data).then((response) => {
+                    this.app.req.post('auth/register', data).then((response) => {
 
                         this.loading = false;
 

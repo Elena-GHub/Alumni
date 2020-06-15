@@ -6,7 +6,7 @@
             </a>
 
             <a @click="clickPage(page)"
-               v-for="(page, index) in getNumberOfPagesShow" :key="index" class="page-numbers"
+               v-for="(page, index) in getNumberOfPagesShown" :key="index" class="page-numbers"
                v-bind:class="{ active: page === currentPage }" href="javascript:;">
                 {{ page }}
             </a>
@@ -34,7 +34,7 @@ export default {
     },
     
     computed: {
-        getNumberOfPagesShow()
+        getNumberOfPagesShown()
         {
             if (this.totalPages > 10)
             {
@@ -70,5 +70,4 @@ export default {
 </script>
 
 <style>
-
 </style>

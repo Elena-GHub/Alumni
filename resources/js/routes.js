@@ -1,10 +1,11 @@
 import Login from './pages/login';
 import Register from './pages/register';
-// import Home from './pages/home';
-import Categories from './pages/categories'; 
+import Home from './pages/home';
+import ForumHome from './pages/forumhome'; 
 import Forum from './pages/forum';
 import ThreadCreate from './pages/thread.create';
 import Thread from './pages/thread';
+import Faq from './pages/faq';
 
 const routes = [
     {
@@ -39,16 +40,21 @@ const routes = [
 
     {
         path: '/',
-        component: Categories,
-        name: 'categories'
-    }
-    /*
-    {
-        path: '/',
         component: Home,
         name: 'home'
+    },
+
+    {
+        path: '/forumhome',
+        component: ForumHome,
+        name: 'forumhome'
+    },
+
+    {
+        path: '/faq',
+        component: Faq,
+        name: 'faq'
     }
-    */
 ];
 
 export default routes;

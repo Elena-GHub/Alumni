@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Category; 
+use App\ForumCategory; 
 use App\Post;
 use App\Thread;
 use App\User;
@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function login(Request $request)
     {
-        if (Auth::attempt(['email' => $email, 'password' => $password]))
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
         {
             return response()->json(Auth::user(), 200);
         }

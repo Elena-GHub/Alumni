@@ -2,18 +2,18 @@
     <div>
         <spinner v-if="loading"></spinner>
         <div v-else>
-            <div class="container" v-for="(category, index) in categories" :key="index" style="margin-bottom:13px">
+            <div class="container" v-for="(forum_category, index) in forum_categories" :key="index" style="margin-bottom:13px">
                 <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                {{ category.title }}
+                                {{ forum_category.title }}
                             </div>
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-center align-content-center"
+                                    <li class="list-group-item d-flex justify-content-left align-content-center"
                                         style="height: 100px"
-                                        v-for="(forum, forumIndex) in category.fora" :key="forumIndex"> 
+                                        v-for="(forum, forumIndex) in forum_category.fora" :key="forumIndex"> 
                                         <div style="width: 40%; display: inline-block;">
                                             <h5 style="line-height:75px"> 
                                                 <router-link :to="{ name: 'forum', params: { id: forum.id } }">
@@ -23,7 +23,7 @@
                                         </div>
                                         <div style="width: 20%; display: inline-block; text-align: center">
                                             <span style="line-height: 75px">
-                                                {{ forum.views }} / <strong> {{ forum.replies -1 }} </strong>
+                                                visitas: {{ forum.views }} / respuestas: <strong> {{ forum.replies }} </strong>
                                             </span>
                                         </div>
                                         <div style="width: 40%; display: inline-block; padding-top: 15px" v-if="forum.latest">
@@ -50,13 +50,13 @@
 
 export default {
 
-    name: 'categories',
+    name: 'forumCategories',
     components: {},
     props: ['app'],
 
     data() {
         return {
-            categories: null,
+            forum_categories: null,
             loading: false,
         }
     },
@@ -68,16 +68,16 @@ export default {
     },
 
     mounted() {
-        this.getCategories();
+        this.getForumCategories();
     },
 
     methods: {
-        getCategories() {
+        getForumCategories() {
             this.loading = true;
 
-            this.app.req.get("categories").then(response => {
+            this.app.req.get("forumCategories").then(response => {
                 this.loading = false;
-                this.categories = response.data;
+                this.forum_categories = response.data;
             });
         }
     }

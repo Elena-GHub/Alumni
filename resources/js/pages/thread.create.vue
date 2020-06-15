@@ -6,7 +6,7 @@
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <router-link :to="{ name: 'categories' }">Home</router-link>
+                            <router-link :to="{ name: 'forumhome' }">Inicio foro</router-link>
                         </li>
                         <li class="breadcrumb-item">
                             <router-link :to="{ name: 'forum', params: { id: app.currentForum.id } }">
@@ -51,16 +51,13 @@
 import "quill/dist/quill.core.css"
 import "quill/dist/quill.snow.css"
 import "quill/dist/quill.bubble.css"
-
 import { quillEditor } from 'vue-quill-editor';
-
 export default {
     name: 'thread-create',
     props: ['app'],
     components: {
         quillEditor
     },
-
     data() {
         return {
             title: '',
@@ -70,19 +67,16 @@ export default {
             loading: false
         };
     },
-
     mounted() {
         if (!this.app.currentForum) {
             this.$router.push({
-                name: 'categories'
+                name: 'forumhome'
             });
         }
     },
-
     methods: {
         onSubmit() {
             this.errors = [];
-
             if (!this.title) {
                 this.errorTitle = 'El hilo debe tener un titulo!';
                 this.errors.push(this.errorTitle);
@@ -90,20 +84,16 @@ export default {
             else {
                 this.errorTitle=null;
             }
-
             if(!this.errors.length) {
                 let data = {
                     forum_id: this.app.currentForum.id,
                     title: this.title,
                     body: this.body
                 }
-
                 this.loading = true;
-
                 this.app.req.post('thread/create', data).then(response => {
                     this.loading = false;
                 
-
                     if (response.data.id) {
                         this.app.activeThreads.unshift(response.data);
                         this.app.threadCount ++;
@@ -122,9 +112,7 @@ export default {
 </script>
 
 <style>
-
     .jumbotron {
         padding: 50px
     }
-
 </style>

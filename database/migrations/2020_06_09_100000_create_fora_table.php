@@ -15,7 +15,7 @@ class CreateForaTable extends Migration
     {
         Schema::create('fora', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id');
+            $table->integer('forum_category_id');
             $table->integer('views')->default(0);
             $table->integer('replies')->default(0);
             $table->string('title');

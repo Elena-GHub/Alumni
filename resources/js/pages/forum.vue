@@ -7,8 +7,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <router-link :to="{ name: 'categories' }">
-                                    Home
+                                <router-link :to="{ name: 'forumhome' }">
+                                    Inicio foro
                                 </router-link>
                             </li>
                             <li class="breadcrumb-item">
@@ -39,24 +39,18 @@
                                 <div>
                                     <!-- image -->
                                 
-                                    
-
                                     <div style="display: intline-block; vertical-align: bottom; margin-left: 10px">
                                         <h4> {{ thread.title | shortTitle }} </h4>
-                                        
-                                        <!-- cannot read property 'user' of null 
-                                        
                                         <span>Autor: {{ thread.user.name }} </span>
                                         <br/>
-                                        <span>
+                                         <!-- cannot read property 'user' of null 
+                                         <span>
                                             Último comentario: {{ thread.latestPost.user.name }}  &middot; 
                                             {{ thread.latestPost.created_at | friendlyDate }}
                                         </span>
                                        -->
                                         
-                                    </div>
-
-                                    
+                                    </div>  
                                 </div>
                                 
                                 <div style="text-align: center">
@@ -72,7 +66,7 @@
                         </div>
                         
                         <!-- pagination -->
-                        <pagination :total-pages="lastPage" 
+                        <pagination :total-pages="last_page" 
                                     :page="currentPage"
                                     :app="app"
                                     :on-click-page="clickPage">
@@ -92,7 +86,6 @@
 
 <script>
 import ActiveThreads from "../components/active-threads";
-
 export default {
     name: 'fora',
     components: { ActiveThreads },
@@ -111,24 +104,19 @@ export default {
         let $this = this;
         this.getForum();
     },
-
     filters: {
         friendlyDate(value) {
             return moment(value).fromNow();
             },
-
         shortTitle(value) {
             return value.length > 35 ? value.substring(0, 35) + "..." : value;
         }
     },
-
     methods: {
         getForum() {
             this.loading = true;
-
             this.app.req.get('forum/'+this.forumId).then(response => {
                 this.loading = false;
-
                 if (response.data.id) {
                     this.forum = response.data;
                     this.lastPage = response.data.threads.last_page;
@@ -136,14 +124,12 @@ export default {
                 
             });
         },
-
         goToCreate(forum) {
             this.app.currentForum = forum;
             this.$router.push({
                 name: 'thread.create'
             });
         },
-
         clickPage(page) {
             this.app.req.get('/forum/'+this.forumId+'?page='+page).then(response => {
                 if(response.data.id) {
@@ -160,9 +146,7 @@ export default {
         }
     }
 }
-
 </script>
 
 <style>
-
 </style>

@@ -6,7 +6,7 @@
                 <div class="jumbotron">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><router-link :to="{ name: 'categories' }">Home</router-link></li>
+                            <li class="breadcrumb-item"><router-link :to="{ name: 'forumhome' }">Inicio foro</router-link></li>
                             <li class="breadcrumb-item"><router-link :to="{ name: 'forum', params: { id: thread.forum.id } }">{{ thread.forum.title }}</router-link></li>
                             <li class="breadcrumb-item">{{ thread.title }}</li>
                         </ol>
@@ -23,7 +23,7 @@
                         <!-- Posts -->
 
                         <div v-for="(post,index) in thread.posts.data" :key="index">
-                            <img class="image" :src="baseUrl + '/fake_user_avatar.jpg'" style="vertical-align: top;"/>
+                            <img class="image" src="../img/fake_user_avatar.jpg" style="vertical-align: top;"/>
                             <div class="post-container">
                                 <span>{{ post.user.name }}</span>
                                 <span style="margin-left: 5px; color: #3d4852;">DICE:</span>
@@ -55,7 +55,7 @@
                         <div v-if="app.user">
                             <button v-if="!replyMode" @click="replyMode=true"
                                     type="button" class="btn btn-lg btn-success">
-                                Envía
+                                Responder
                             </button>
 
                             <button v-else @click="replyMode=false"
@@ -77,7 +77,7 @@
                                               :options="editorOption">
                                 </quill-editor>
 
-                                <button class="btn btn-lg btn-success float-right" style="margin-bottom: 50px">Responder</button>
+                                <button class="btn btn-lg btn-success float-right" style="margin-bottom: 50px">Enviar</button>
                             </form>
                         </div>
                     </div>
@@ -95,7 +95,6 @@
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
-
 import { quillEditor } from "vue-quill-editor";
 import ActiveThreads from "../components/active-threads";
 
@@ -116,11 +115,10 @@ export default {
             totalPages: null
         };
     },
-
     mounted() {
         this.getThread();
     },
-
+    
     filters: {
         friendlyDate(value) {
             return moment(value).fromNow();
@@ -134,7 +132,7 @@ export default {
             this.getThread(newVal); 
         }
     },
-
+    
     methods: {
         getThread(newVal) {
             this.loading = true;
@@ -142,11 +140,9 @@ export default {
             if(this.currentPage) {
                 page = this.currentPage;
             }
-
             if(newVal) {
                 this.threadId = newVal;
             }
-
             this.app.req.get('thread/'+this.threadId+'?page='+page).then(response => {
                 this.loading = false;
                
@@ -156,7 +152,6 @@ export default {
                 }
             });
         },
-
         clickPage() {
             this.app.req.get('/thread'+this.threadId+'?page='+page).then(response => {
                 this.thread = response.data;
@@ -168,7 +163,6 @@ export default {
                 })
             })
         },
-
         onSubmit() {
             if(!this.body) {
                 this.errorBody = 'Escribe algo, vago!';
@@ -176,7 +170,6 @@ export default {
             else {
                 this.errorBody = null;
             }
-
             if(!this.errorBody) {
                 let data = {
                     body: this.body,
@@ -209,14 +202,12 @@ export default {
         }
     }
 }
-
 </script>
 
 <style>
     p, h1, ol {
         margin-bottom: 0 !important;
     }
-
     .post-container {
         border: 2px solid #3d4852;
         background-color: #bfbfb3;
@@ -240,5 +231,4 @@ export default {
     .image {
         height: 75px;
     }
-
 </style>
